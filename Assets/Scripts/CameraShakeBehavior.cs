@@ -6,14 +6,13 @@ public class CameraShakeBehavior : MonoBehaviour {
 	private Vector3 originalLocation;
 
 	void Start () {
+	    WaveBehavior.numWaves = 0;
 		originalLocation = transform.position;
 	}
 
 	void FixedUpdate(){
-		
 		if((WaveBehavior.numWaves > 5 && Random.Range(0, 50/WaveBehavior.numWaves) == 0) || WaveBehavior.numWaves > 15) {
 			ShakeCamera(.2f);
-
 		}
 
 		if(!transform.position.Equals(originalLocation)) {

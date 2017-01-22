@@ -2,6 +2,7 @@
 // http://forum.unity3d.com/threads/circular-fade-in-out-shader.344816/
 
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
@@ -20,6 +21,9 @@ public class ScreenTransitionImageEffect : MonoBehaviour
     public Texture2D maskTexture;
     public bool maskInvert;
     public bool activated = false;
+    public GameObject button;
+    public GameObject logo;
+    public bool isFading = false;
 
     private Material m_Material;
     private bool m_maskInvert;
@@ -62,7 +66,17 @@ public class ScreenTransitionImageEffect : MonoBehaviour
 			SceneManager.LoadScene(0, LoadSceneMode.Single);
 
         }
+
+        if(isFading){
+            fadeLogo();
+        }
     }
+
+    void fadeLogo(){
+        Color lc = logo.GetComponent<Image>().color;
+        logo.GetComponent<Image>().color = new Color(lc.r, lc.g, lc.b, lc.a - 0.03f);
+	}
+
 
     void OnDisable()
     {

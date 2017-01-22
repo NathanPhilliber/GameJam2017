@@ -1,24 +1,23 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class StartMenuButtonBehavior : MonoBehaviour {
 
 	public GameObject ring;
+	public GameObject logo;
+    public bool logoFade = false;
 
     private Rigidbody2D rb;
+
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update () {
-        if(Random.Range(0, 100) == 0){
-            //rb.AddForce(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0));
-        }
-    }
 
     void OnTriggerEnter2D(Collider2D other){
+        Camera.main.GetComponent<ScreenTransitionImageEffect>().isFading = true;
 		if(other.CompareTag("Wave")) {
 			other.GetComponent<WaveBehavior>().maxSize = 0;
 			Pop();
@@ -36,9 +35,6 @@ public class StartMenuButtonBehavior : MonoBehaviour {
 			ring.GetComponent<WaveBehavior>().comboCounter = 0;
 		}
 
-	    //SpawnNewBubbles();
-
-		//sound.PlayBigPop();
 		Camera.main.GetComponent<ScreenTransitionImageEffect>().activated = true;
 
 		Destroy(gameObject);
