@@ -25,7 +25,7 @@ public class GameOverBehavior : MonoBehaviour {
 		}
 
 		if(Input.GetButtonDown("Fire1")) {
-			SceneManager.LoadScene(2, LoadSceneMode.Single);
+			SceneManager.LoadScene(0, LoadSceneMode.Single);
 		}
 	}
 }

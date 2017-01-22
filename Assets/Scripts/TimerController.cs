@@ -78,7 +78,7 @@ public class TimerController : MonoBehaviour {
 				gameOverDelay = 75;
 			}
 			else {
-				SceneManager.LoadScene(1, LoadSceneMode.Single);
+				SceneManager.LoadScene(2, LoadSceneMode.Single);
 			}
 
 		}

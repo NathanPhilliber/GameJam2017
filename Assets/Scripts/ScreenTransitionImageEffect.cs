@@ -63,7 +63,7 @@ public class ScreenTransitionImageEffect : MonoBehaviour
             maskValue -= .01f;
         if(maskValue <= .25f){
             //load scene
-			SceneManager.LoadScene(0, LoadSceneMode.Single);
+			SceneManager.LoadScene(1, LoadSceneMode.Single);
 
         }
 
