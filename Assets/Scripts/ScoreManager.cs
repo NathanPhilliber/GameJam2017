@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour {
 	private int delayFrames = 10;
 	private int delayCounter = 0;
 
-	private int scoreDisplayed;
+	public int scoreDisplayed;
 	public int totalScore;
 	private SoundManager sound;
 	private int goodShown = 0;
@@ -45,6 +45,14 @@ public class ScoreManager : MonoBehaviour {
 			GameObject spawn = (GameObject) Instantiate(praiseParticle);
 			Destroy(spawn, 3);
 			goodShown++;
+		}else if(scoreDisplayed >= 1000000 && goodShown == 5) {
+			GameObject spawn = (GameObject) Instantiate(praiseParticle);
+			Destroy(spawn, 3);
+			goodShown++;
+		}else if(scoreDisplayed >= 10000000 && goodShown == 6) {
+			GameObject spawn = (GameObject) Instantiate(praiseParticle);
+			Destroy(spawn, 3);
+			goodShown++;
 		}
 
 
@@ -73,10 +81,18 @@ public class ScoreManager : MonoBehaviour {
 				text.color = new Color(1, .4f, .4f);
 				delayFrames = 1;
 				scoreDisplayed += 100;
-			}else {
+			}else if(totalScore - scoreDisplayed <= 100000) {
+				text.color = new Color(1, .4f, .4f);
+				delayFrames = 1;
+				scoreDisplayed += 500;
+			}else if(totalScore - scoreDisplayed <= 1000000) {
 				text.color = new Color(1, .3f, .3f);
+				delayFrames = 1;
+				scoreDisplayed += 1000;
+			}else {
+				text.color = new Color(1, .2f, .2f);
                 delayFrames = 1;
-                scoreDisplayed += 500;
+                scoreDisplayed += 10000;
             }
 
 			if(delayCounter >= delayFrames) {
